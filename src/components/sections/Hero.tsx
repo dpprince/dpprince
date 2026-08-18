@@ -46,41 +46,71 @@ export default function Hero() {
       )}
 
       <div className="container hero__content">
-        <motion.div
-          variants={container}
-          initial={reduce ? false : "hidden"}
-          animate="show"
-          className="hero__text"
-        >
-          <motion.p variants={item} className="hero__eyebrow mono">
-            <span className="hero__eyebrow-line" aria-hidden="true" />
-            {profile.role}
-          </motion.p>
+        <div className="hero__layout">
+          <motion.div
+            variants={container}
+            initial={reduce ? false : "hidden"}
+            animate="show"
+            className="hero__text"
+          >
+            <motion.p variants={item} className="hero__eyebrow mono">
+              <span className="hero__eyebrow-line" aria-hidden="true" />
+              {profile.role}
+            </motion.p>
 
-          <motion.h1 variants={item} className="hero__name">
-            <span>{profile.firstName}</span>
-            <span className="gradient-text">{profile.lastName}</span>
-          </motion.h1>
+            <motion.h1 variants={item} className="hero__name">
+              <span>{profile.firstName}</span>
+              <span className="gradient-text">{profile.lastName}</span>
+            </motion.h1>
 
-          <motion.p variants={item} className="hero__tagline">
-            {profile.tagline}
-          </motion.p>
+            <motion.p variants={item} className="hero__tagline">
+              {profile.tagline}
+            </motion.p>
 
-          <motion.p variants={item} className="hero__summary">
-            {profile.summary}
-          </motion.p>
+            <motion.p variants={item} className="hero__summary">
+              {profile.summary}
+            </motion.p>
 
-          <motion.div variants={item} className="hero__actions">
-            <a href="#projects" className="btn btn--primary">
-              View My Work
-              <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
-            <a href="#contact" className="btn btn--ghost">
-              <Mail size={16} aria-hidden="true" />
-              Contact Me
-            </a>
+            <motion.div variants={item} className="hero__actions">
+              <a href="#projects" className="btn btn--primary">
+                View My Work
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+              <a href="#contact" className="btn btn--ghost">
+                <Mail size={16} aria-hidden="true" />
+                Contact Me
+              </a>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          <motion.div
+            className="hero__photo-wrap"
+            initial={reduce ? false : { opacity: 0, scale: 0.85, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: EASE, delay: 0.4 }}
+          >
+            <div className="hero__photo-glow" aria-hidden="true" />
+            <div className="hero__photo-ring" aria-hidden="true">
+              <svg viewBox="0 0 200 200" className="hero__photo-ring-svg">
+                <circle cx="100" cy="100" r="96" fill="none" stroke="url(#ringGrad)" strokeWidth="1.5" strokeDasharray="8 6" opacity="0.5" />
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="var(--accent)" />
+                    <stop offset="100%" stopColor="var(--violet)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div className="hero__photo-frame">
+              <img src="/dpprince/profile.jpg" alt="Dipayan Pramanik" className="hero__photo-img" loading="eager" />
+              <div className="hero__photo-overlay" aria-hidden="true" />
+            </div>
+            <div className="hero__photo-badge mono">
+              <span className="hero__photo-badge-dot" aria-hidden="true" />
+              Available for opportunities
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       <div className="hero__hud" aria-hidden="true">
