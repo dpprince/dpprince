@@ -1,0 +1,29 @@
+@import "./base.css";
+@import "./ui.css";
+@import "./nav.css";
+@import "./hero.css";
+@import "./about.css";
+@import "./projects.css";
+@import "./experience.css";
+@import "./skills.css";
+@import "./education.css";
+@import "./beyond.css";
+@import "./contact.css";
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #031722;
+  font-weight: 600;
+  transition: top 0.25s var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 16px;
+}

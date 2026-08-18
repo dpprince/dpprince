@@ -1,0 +1,205 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+
+.hero__glow {
+  position: absolute;
+  top: 18%;
+  right: -8%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, rgba(57, 214, 255, 0.1), transparent 62%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.92;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__text {
+  max-width: 760px;
+  padding: clamp(32px, 5vw, 52px);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-soft);
+  -webkit-backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  backdrop-filter: blur(18px) saturate(var(--glass-saturate));
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 40px 90px -40px rgba(0, 0, 0, 0.85);
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.hero__eyebrow-line {
+  width: 44px;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(57, 214, 255, 0.6);
+}
+
+.hero__name {
+  font-size: clamp(3rem, 11vw, 7.2rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__tagline {
+  margin-top: 26px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.hero__tagline::before {
+  content: "[ ";
+  color: var(--accent);
+}
+
+.hero__tagline::after {
+  content: " ]";
+  color: var(--accent);
+}
+
+.hero__summary {
+  margin-top: 18px;
+  max-width: 480px;
+  color: var(--text-dim);
+  font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 38px;
+}
+
+.hero__hud {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 40px;
+  padding: 12px 26px;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  background: rgba(9, 13, 18, 0.35);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-color: var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+  pointer-events: none;
+}
+
+.hero__hud-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__hud-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.hero__hud-value {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.hero__corner {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-top: 1px solid var(--line-strong);
+  border-left: 1px solid var(--line-strong);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__corner--tl {
+  top: calc(var(--nav-h) + 22px);
+  left: var(--gutter);
+}
+
+@media (min-width: 1180px) {
+  .hero__stage {
+    left: 42%;
+  }
+}
+
+/* Let the hero canvas track the pointer so the 3D core reacts to the mouse
+   (kept off on touch devices so scrolling over the hero is never blocked) */
+@media (min-width: 768px) {
+  .hero__stage {
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero__stage {
+    opacity: 0.55;
+  }
+  .hero__glow {
+    top: 30%;
+    right: -30%;
+    width: 480px;
+    height: 480px;
+  }
+  .hero__name {
+    font-size: clamp(2.7rem, 15vw, 4.2rem);
+  }
+  .hero__text {
+    padding: 28px 24px;
+    border-radius: var(--r-lg);
+  }
+  .hero__hud {
+    display: none;
+  }
+}
